@@ -30,18 +30,6 @@ code := wordlist.NewPassword(wordlist.WithLength(8), wordlist.WithCharset("ABCDE
 // E4PRBPPL
 ```
 
-Or many unambiguous eight character discount codes:
-
-```go
-code := wordlist.NewPasswordGenerator(wordlist.WithLength(8), wordlist.WithCharset("ABCDEFGHKLMNPRSTWXY3456789"))
-fmt.Println(code)
-fmt.Println(code)
-fmt.Println(code)
-// 4Y9ELLBT
-// LAG7EFSN
-// 83PAFPTT
-```
-
 ## Licenses
 
 Package wordlist is licensed under the terms described in

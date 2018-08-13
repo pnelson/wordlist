@@ -14,12 +14,6 @@ type Passphrase struct {
 
 // NewPassphrase returns a new passphrase.
 func NewPassphrase(opts ...PassphraseOption) string {
-	p := NewPassphraseGenerator(opts...)
-	return p.String()
-}
-
-// NewPassphraseGenerator returns a new passphrase generator.
-func NewPassphraseGenerator(opts ...PassphraseOption) Passphrase {
 	p := Passphrase{
 		count:  defaultWordCount,
 		length: defaultWordLength,
@@ -28,11 +22,6 @@ func NewPassphraseGenerator(opts ...PassphraseOption) Passphrase {
 	for _, option := range opts {
 		option(&p)
 	}
-	return p
-}
-
-// String implements the fmt.Stringer interface.
-func (p Passphrase) String() string {
 	s := make([]string, p.count)
 	max := big.NewInt(int64(len(eff)))
 	for i := range s {

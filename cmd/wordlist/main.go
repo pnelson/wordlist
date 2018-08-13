@@ -59,8 +59,8 @@ func main() {
 		if *noDigit {
 			options = append(options, wordlist.WithCharsetFilter(unicode.IsDigit))
 		}
-		password := wordlist.NewPasswordGenerator(options...)
 		for i := 0; i < *n; i++ {
+			password := wordlist.NewPassword(options...)
 			fmt.Println(password)
 		}
 		return
@@ -70,8 +70,8 @@ func main() {
 		wordlist.WithWordLength(*wordLength),
 		wordlist.WithWordSeparator(*wordSep),
 	}
-	passphrase := wordlist.NewPassphraseGenerator(options...)
 	for i := 0; i < *n; i++ {
+		passphrase := wordlist.NewPassphrase(options...)
 		fmt.Println(passphrase)
 	}
 }

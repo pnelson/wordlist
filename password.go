@@ -13,12 +13,6 @@ type Password struct {
 
 // NewPassword returns a new password.
 func NewPassword(opts ...PasswordOption) string {
-	p := NewPasswordGenerator(opts...)
-	return p.String()
-}
-
-// NewPasswordGenerator returns a new password generator.
-func NewPasswordGenerator(opts ...PasswordOption) Password {
 	p := Password{
 		length:  defaultLength,
 		charset: defaultCharset,
@@ -26,11 +20,6 @@ func NewPasswordGenerator(opts ...PasswordOption) Password {
 	for _, option := range opts {
 		option(&p)
 	}
-	return p
-}
-
-// String implements the fmt.Stringer interface.
-func (p Password) String() string {
 	b := make([]byte, p.length)
 	max := big.NewInt(int64(len(p.charset)))
 	for i := range b {
